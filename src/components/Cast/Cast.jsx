@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchCast } from 'services/fetchMovies';
 import { CastList } from './CastList';
-
+import { Box } from 'components/Box';
 
  const Cast = () => {
   const { movieId } = useParams();
@@ -12,7 +12,9 @@ import { CastList } from './CastList';
   }, [movieId]);
   return (
     <>
-      <CastList  cast={cast}/>
+    <Box as="div" pt="4">
+       <CastList  cast={cast}/>
+    </Box>
     </>
   );
 };

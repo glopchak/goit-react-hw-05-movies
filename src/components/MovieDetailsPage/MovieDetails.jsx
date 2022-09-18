@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { Box } from 'components/Box';
+import { TitleMovie, Title } from './MovieDetailsPage.styled';
 
 const BASE_IMG_URL = 'https://image.tmdb.org/t/p/w300';
 
@@ -13,16 +14,16 @@ const BASE_IMG_URL = 'https://image.tmdb.org/t/p/w300';
     genres,
   } = movie;
   return (
-    <Box display="flex">
+    <Box display="flex" as="div" p="4">
       <img src={BASE_IMG_URL + poster_path} alt="" />
       <Box px={20}>
-        <h3>
+        <TitleMovie>
           {original_title} ({release_date.slice(0, 4)})
-        </h3>
+        </TitleMovie>
         <p>Vote average: {vote_average.toFixed(2)}</p>
-        <h3>Overview</h3>
+        <Title>Overview</Title>
         <p>{overview}</p>
-        <h3>Genres</h3>
+        <Title>Genres</Title>
         <p>{genres.map(genre => genre.name).join(', ')}</p>
       </Box>
     </Box>

@@ -1,15 +1,16 @@
 import { Suspense } from "react";
 import { Outlet } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { Navigation, LinkStyled } from "./SharedLayout.styled";
+
 
 export const SharedLayout = () => {
     return (
       <>
         <header>
-          <div>
-            <Link to="">Home </Link>
-            <Link to="movies">Movies</Link>
-          </div>
+          <Navigation>
+            <LinkStyled to="">Home </LinkStyled>
+            <LinkStyled to="movies">Movies</LinkStyled>
+          </Navigation>
         </header>
         <Suspense fallback={<p>Loading...</p>}>
           <Outlet />

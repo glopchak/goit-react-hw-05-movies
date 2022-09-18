@@ -2,6 +2,8 @@ import { useEffect, useState} from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchReviews } from 'services/fetchMovies'; 
 import PropTypes from 'prop-types';
+import { ReviewTitle, ListItem } from './Reviews.styled';
+import { Box } from 'components/Box';
 
 
  const Reviews = () => {
@@ -15,14 +17,17 @@ import PropTypes from 'prop-types';
   }, [movieId]);
   
   return (
-    <ul>
+    <Box  as="div" pt="4">
+      <ul>
       {reviews.map(({ id, author, content }) => (
-        <li key={id}>
-          <h4>Autor: {author}</h4>
+        <ListItem key={id}>
+          <ReviewTitle>Autor: {author}</ReviewTitle>
           <p>{content}</p>
-        </li>
+        </ListItem>
       ))}
     </ul>
+    </Box>
+
   );
 };
 

@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { CastImg, List, ListItem } from './CastList.stuled';
 
 const defaultPoster = 'https://www.proficinema.ru/assets/images/cnt/poster_no.png';
 const BASE_IMG_URL = 'https://image.tmdb.org/t/p/w200';
@@ -8,18 +9,18 @@ export const CastList = ({ cast }) => {
   return (
     <>
       {
-        <ul>
+        <List>
           {cast.slice(0, 4).map(({ id, profile_path, name, character }) => (
-            <li key={id}>
-              <img
+            <ListItem key={id}>
+              <CastImg
                 src={profile_path ? BASE_IMG_URL + profile_path : defaultPoster}
                 alt={name}
               />
               <p>{name}</p>
               <p>Character: {character}</p>
-            </li>
+            </ListItem>
           ))}
-        </ul>
+        </List>
       }
     </>
   );

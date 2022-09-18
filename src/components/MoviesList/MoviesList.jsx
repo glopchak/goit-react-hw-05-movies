@@ -1,5 +1,7 @@
 import PropTypes from 'prop-types';
 import { Link, useLocation } from 'react-router-dom';
+import { List, ListItem, ImgTitle} from './MoviesListStyled.styled';
+import { Box } from 'components/Box';
 
 const defaultPoster = 'https://www.proficinema.ru/assets/images/cnt/poster_no.png'
 const BASE_IMG_URL = 'https://image.tmdb.org/t/p/w300';
@@ -7,9 +9,10 @@ const BASE_IMG_URL = 'https://image.tmdb.org/t/p/w300';
 export const MoviesList = ({ movies }) => {
     const location = useLocation();
   return (
-    <div>
+    <Box display="flex" as="div" p="4">
+      <List>
       {movies.map(({ id, poster_path, title }) => (
-        <li key={id}>
+        <ListItem key={id}>
           <Link to={`/movies/${id}`} state={{ from: location }}>
             <img
               width={300}
@@ -20,11 +23,13 @@ export const MoviesList = ({ movies }) => {
               }
               alt={title}
             />
-            {title}
+            <ImgTitle>{title}</ImgTitle>
           </Link>
-        </li>
+        </ListItem>
       ))}
-    </div>
+    </List>
+    </Box>
+    
   );
 };
 
